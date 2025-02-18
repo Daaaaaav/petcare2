@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petcare Chatbot</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-xl-6 chat mt-5">
+        <div class="card chat-card">
+          <div class="card-header bg-primary text-white">
+            <div class="d-flex align-items-center">
+              <div class="img_cont mr-3">
+                <img src="{{ url_for('static', filename='petcare_logo.jpg') }}" class="rounded-circle user_img">
+              </div>
+              <div class="user_info">
+                <h6 class="mb-0">Petcare Assist</h6>
+                <span>Ask me anything related to your fluffy companions!</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body msg_card_body" id="messageContainer">
+            <div class="bot-message">Hello pet friend! How may I help you?</div>
+          </div>
+          <div class="card-footer">
+            <form id="textForm">
+              <div class="input-group">
+                <input type="text" id="text" class="form-control" placeholder="Type your message here..." required>
+                <div class="input-group-append">
+                  <button type="submit" id="sendButton" class="btn btn-primary">Send</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-8 col-xl-6">
+        <div class="card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Other Functions</h5>
+            <div class="btn-group btn-group-toggle flex-wrap" data-toggle="buttons">
+              <label class="btn btn-secondary m-1" onclick="switchModel('mini')">
+                <input type="radio" name="options" autocomplete="off"> Switch to MiniLM
+              </label>
+              <label class="btn btn-secondary m-1" onclick="switchModel('mpnet')">
+                <input type="radio" name="options" autocomplete="off"> Switch to MPNet
+              </label>
+              <button class="btn btn-info m-1" onclick="sendFeedback()">Send Feedback</button>
+              <button class="btn btn-success m-1" onclick="getEvaluation()">Get Evaluation Metrics</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='msg.js') }}"></script>
+</body>
+</html>
